@@ -250,7 +250,7 @@ jobs:
       - name: Build OS packages
         run: .github/scripts/generate-os-packages.sh
         shell: bash
-      - uses: actions/attest-build-provenance@v3
+      - uses: actions/attest-build-provenance@v4
         if: startsWith(github.ref, 'refs/tags/v')
         with:
           subject-path: 'artifacts/*'
@@ -279,7 +279,7 @@ jobs:
       - name: Copy artifacts
         run: .github/scripts/maybe-with-graalvm-home.sh copyCompatLauncher --directory artifacts/
         shell: bash
-      - uses: actions/attest-build-provenance@v3
+      - uses: actions/attest-build-provenance@v4
         if: startsWith(github.ref, 'refs/tags/v')
         with:
           subject-path: 'artifacts/*'
@@ -317,7 +317,7 @@ jobs:
       - name: Copy artifacts
         run: .github/scripts/maybe-with-graalvm-home.sh copyStaticLauncher --directory artifacts/
         shell: bash
-      - uses: actions/attest-build-provenance@v3
+      - uses: actions/attest-build-provenance@v4
         if: startsWith(github.ref, 'refs/tags/v')
         with:
           subject-path: 'artifacts/*'
@@ -355,7 +355,7 @@ jobs:
       - name: Copy artifacts
         run: .github/scripts/maybe-with-graalvm-home.sh copyMostlyStaticLauncher --directory artifacts/
         shell: bash
-      - uses: actions/attest-build-provenance@v3
+      - uses: actions/attest-build-provenance@v4
         if: startsWith(github.ref, 'refs/tags/v')
         with:
           subject-path: 'artifacts/*'
@@ -393,7 +393,7 @@ jobs:
       - name: Copy artifacts
         run: .github/scripts/maybe-with-graalvm-home.sh copyContainerLauncher --directory artifacts/
         shell: bash
-      - uses: actions/attest-build-provenance@v3
+      - uses: actions/attest-build-provenance@v4
         if: startsWith(github.ref, 'refs/tags/v')
         with:
           subject-path: 'artifacts/*'
@@ -423,7 +423,7 @@ jobs:
       run: ./mill -i waitForSync
     - name: Copy artifacts
       run: ./mill -i copyJarLaunchers
-    - uses: actions/attest-build-provenance@v3
+    - uses: actions/attest-build-provenance@v4
       if: startsWith(github.ref, 'refs/tags/v')
       with:
         subject-path: 'artifacts/*'
